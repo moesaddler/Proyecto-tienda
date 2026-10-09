@@ -1,0 +1,335 @@
+/* =====================================================
+   VARIABLES DE COLOR
+   Se definen una sola vez en :root y se usan con var(--nombre).
+   Si querés cambiar un color, lo cambiás acá y se actualiza en todo el sitio.
+   ===================================================== */
+:root {
+  --celeste: #75aadb;
+  --celeste-claro: #e8f1f9;
+  --marino: #0b2a4a;
+  --oro: #f4c542;
+  --blanco: #ffffff;
+}
+
+/* =====================================================
+   ESTILOS GENERALES
+   ===================================================== */
+
+/* Selector universal (*): se aplica a TODOS los elementos.
+   - box-sizing: border-box hace que el padding y el borde se cuenten dentro del ancho.
+   - margin y padding en 0 quitan los espacios que el navegador pone por defecto. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;   /* al hacer clic en el menú, la página se desplaza suavemente */
+  scroll-padding-top: 90px;  /* deja lugar para el header fijo, así no tapa el título de la sección */
+}
+
+body {
+  font-family: "Work Sans", sans-serif; /* fuente de los párrafos; sans-serif es el respaldo si no carga */
+  background-color: var(--celeste-claro);
+  color: var(--marino);
+  line-height: 1.6; /* altura de línea: hace el texto más legible */
+}
+
+/* Fuente de los títulos (Anton). Se aplica a varios selectores a la vez, separados por coma */
+h1, h2, h3 {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em; /* separación entre letras */
+  line-height: 1.1;
+}
+
+/* Borde visible cuando se navega con el teclado (Tab). Importante para la accesibilidad */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--oro);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   HEADER Y NAVEGACIÓN (Flexbox)
+   ===================================================== */
+.header {
+  position: sticky;  /* se queda fijo arriba al hacer scroll */
+  top: 0;
+  z-index: 10;       /* lo pone por encima del resto del contenido */
+  display: flex;     /* convierte al header en contenedor flex: logo a un lado y menú al otro */
+  flex-wrap: wrap;   /* si no entra todo en una línea, los elementos bajan a la siguiente */
+  justify-content: space-between; /* reparte el espacio: uno a cada extremo */
+  align-items: center;            /* alinea verticalmente al centro */
+  gap: 10px 20px;                 /* separación: 10px entre filas, 20px entre columnas */
+  padding: 12px 24px;             /* espacio interno: 12px arriba/abajo, 24px a los lados */
+  background-color: var(--marino);
+}
+
+.header__marca { display: flex; align-items: center; gap: 12px; } /* logo y título en línea */
+
+.header__titulo { font-size: 1.8rem; color: var(--blanco); }
+
+/* Lista del menú: Flexbox la pone en horizontal (Clase 6) */
+.nav__lista {
+  display: flex;
+  justify-content: space-around; /* reparte los ítems con espacio alrededor */
+  gap: 24px;
+  list-style: none;              /* quita las viñetas de la lista */
+}
+
+.nav__enlace {
+  color: var(--blanco);
+  text-decoration: none;  /* quita el subrayado de los enlaces */
+  font-weight: 600;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent; /* borde invisible para que el hover no mueva el texto */
+}
+
+.nav__enlace:hover { border-bottom-color: var(--oro); } /* :hover = cuando pasás el mouse */
+
+/* =====================================================
+   INICIO (fondo con degradado)
+   ===================================================== */
+.hero {
+  position: relative;    /* permite ubicar el número decorativo dentro de esta sección */
+  display: flex;
+  flex-direction: column; /* en celular: elementos apilados uno debajo del otro */
+  align-items: center;
+  gap: 24px;
+  padding: 48px 24px;
+  overflow: hidden;       /* recorta el número gigante si se sale de la sección */
+  /* background con degradado en diagonal (135°) de un celeste a otro más oscuro */
+  background: linear-gradient(135deg, var(--celeste) 0%, #4f86b8 100%);
+  color: var(--marino);
+}
+
+/* El "10" gigante de fondo */
+.hero__numero {
+  position: absolute;     /* se ubica respecto de .hero y no ocupa lugar en el flujo */
+  right: -20px;
+  bottom: -60px;
+  font-family: "Anton", sans-serif;
+  font-size: clamp(14rem, 40vw, 26rem); /* clamp(mínimo, ideal, máximo): tamaño que se adapta a la pantalla */
+  line-height: 1;
+  color: var(--blanco);
+  opacity: 0.25;          /* semitransparente */
+  pointer-events: none;   /* no interfiere con los clics */
+}
+
+.hero__contenido { position: relative; max-width: 480px; } /* relative: queda por encima del número */
+
+.hero__titulo { font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 12px; }
+
+.hero__contenido p { margin-bottom: 22px; font-size: 1.1rem; }
+
+.hero__imagen { position: relative; width: min(260px, 70%); height: auto; } /* min(): usa el menor de los dos valores */
+
+/* Botón reutilizable (lo usan el hero y el formulario) */
+.boton {
+  display: inline-block;  /* permite darle padding a un enlace <a> */
+  padding: 12px 26px;
+  border: 0;
+  border-radius: 4px;     /* esquinas redondeadas */
+  background-color: var(--marino);
+  color: var(--blanco);
+  font: 600 1rem "Work Sans", sans-serif; /* atajo: peso, tamaño y familia */
+  text-decoration: none;
+  cursor: pointer;        /* manito al pasar el mouse */
+}
+
+.boton:hover { background-color: #123d6b; }
+
+/* =====================================================
+   SECCIONES (estilos compartidos)
+   ===================================================== */
+.seccion {
+  max-width: 1100px;  /* ancho máximo del contenido */
+  margin: 0 auto;     /* auto a los lados: centra el bloque horizontalmente */
+  padding: 56px 24px;
+}
+
+.seccion__titulo { font-size: 2.4rem; margin-bottom: 28px; }
+
+/* =====================================================
+   PRODUCTOS (Flexbox)
+   ===================================================== */
+
+/* Padre flex: distribuye las cards en horizontal */
+.productos__lista {
+  display: flex;
+  flex-wrap: wrap;  /* cuando no entran, las cards pasan a la fila de abajo */
+  gap: 20px;        /* separación entre cards */
+}
+
+.card {
+  /* flex: crecer | encogerse | tamaño base.
+     "1 1 230px" = cada card mide mínimo ~230px y se estira para ocupar el espacio libre */
+  flex: 0 1 calc(25% - 15px);  /* 4 cards por fila, sin estirarse */
+  display: flex;
+  flex-direction: column; /* dentro de la card, los elementos van apilados */
+  padding: 18px;
+  background-color: var(--blanco);
+  border-bottom: 5px solid var(--celeste);
+  border-radius: 6px;
+}
+
+.card__imagen {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* fuerza un recuadro cuadrado */
+  object-fit: contain;   /* la imagen se ve completa, sin deformarse */
+  margin-bottom: 12px;
+}
+
+.card__nombre { font-size: 1.4rem; margin-bottom: 6px; }
+
+.card__descripcion { font-size: 0.95rem; }
+
+/* Precio destacado: fuente de títulos, más grande y de otro color */
+.card__precio {
+  margin: 12px 0;
+  font-family: "Anton", sans-serif;
+  font-size: 1.7rem;
+  color: #1c5d99;
+}
+
+.card__boton {
+  margin-top: auto;  /* en una columna flex, empuja el botón al final: así todos quedan alineados abajo */
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--oro);
+  color: var(--marino);
+  font: 600 0.95rem "Work Sans", sans-serif;
+  cursor: pointer;
+}
+
+.card__boton:hover { background-color: #ffd65c; }
+
+/* =====================================================
+   VIDEO
+   ===================================================== */
+.video {
+  width: 100%;        /* ocupa todo el ancho disponible */
+  max-height: 460px;
+  border-radius: 6px;
+  background-color: var(--marino); /* fondo mientras el video carga */
+}
+
+/* =====================================================
+   RESEÑAS (Grid)
+   ===================================================== */
+
+/* Padre grid. Por defecto (celular): una sola columna */
+.resenas {
+  display: grid;
+  grid-template-columns: 1fr; /* 1fr = una fracción del espacio disponible */
+  gap: 20px;
+}
+
+.resena {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* texto arriba, nombre abajo */
+  gap: 12px;
+  padding: 22px;
+  background-color: var(--marino);
+  color: var(--blanco);
+  border-radius: 6px;
+}
+
+.resena--destacada { background-color: #1c5d99; } /* modificador BEM: cambia solo el color */
+
+.resena cite { font-style: normal; font-weight: 600; color: var(--oro); } /* cite viene en cursiva; la quitamos */
+
+/* =====================================================
+   CONTACTO
+   ===================================================== */
+
+/* Por defecto (celular): una columna, el formulario arriba y el mapa abajo */
+.contacto { display: grid; grid-template-columns: 1fr; gap: 28px; }
+
+/* El formulario usa flex en columna para apilar sus campos */
+.formulario { display: flex; flex-direction: column; gap: 8px; }
+
+.formulario label { font-weight: 600; }
+
+.formulario input, .formulario textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--marino);
+  border-radius: 4px;
+  background-color: var(--blanco);
+  font: inherit; /* hereda la fuente del resto de la página (los inputs no lo hacen solos) */
+}
+
+.formulario .boton { align-self: flex-start; margin-top: 10px; } /* el botón no se estira a todo el ancho */
+
+.contacto__mapa { width: 100%; min-height: 300px; border: 0; border-radius: 6px; }
+
+/* =====================================================
+   TABLA
+   ===================================================== */
+.tabla__titulo { margin: 40px 0 16px; font-size: 1.6rem; }
+
+.tabla__contenedor { overflow-x: auto; } /* si la tabla no entra en pantalla, aparece scroll horizontal */
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse; /* une los bordes de las celdas en una sola línea */
+  background-color: var(--blanco);
+}
+
+.tabla th, .tabla td { padding: 10px 14px; border: 1px solid var(--celeste); text-align: left; }
+
+.tabla thead th { background-color: var(--marino); color: var(--blanco); } /* encabezado oscuro */
+
+/* Filas combinadas ("Mensajes pendientes..."). !important fuerza el centrado sobre la regla anterior */
+.tabla__grupo { background-color: var(--celeste); text-align: center !important; }
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.footer {
+  padding: 24px;
+  text-align: center;
+  background-color: var(--marino);
+  color: var(--blanco);
+}
+
+.footer__aviso { margin-top: 6px; font-size: 0.85rem; opacity: 0.8; }
+
+/* =====================================================
+   MEDIA QUERIES (diseño responsivo)
+   Estrategia "mobile first": arriba están los estilos para celular
+   y acá se agregan cambios a medida que la pantalla es más ancha.
+   min-width: 600px significa "desde 600px de ancho en adelante".
+   ===================================================== */
+
+/* Celulares chicos: el menú puede pasar a varias líneas */
+@media (max-width: 480px) {
+  .nav__lista { gap: 14px; flex-wrap: wrap; }
+}
+
+/* Tablets (desde 600px): las reseñas pasan a 2 columnas */
+@media (min-width: 600px) {
+  .resenas { grid-template-columns: repeat(2, 1fr); } /* repeat(2, 1fr) = 2 columnas iguales */
+}
+
+/* Laptops (desde 768px): el inicio y el contacto pasan a distribuirse en horizontal */
+@media (min-width: 768px) {
+  .hero { flex-direction: row; justify-content: center; padding: 72px 48px; } /* texto e imagen lado a lado */
+  .contacto { grid-template-columns: 1fr 1fr; }  /* formulario y mapa en dos columnas iguales */
+  .contacto__mapa { min-height: 100%; }          /* el mapa se estira a la altura del formulario */
+}
+
+/* Pantallas grandes (desde 992px): las reseñas pasan a 3 columnas */
+@media (min-width: 992px) {
+  .resenas { grid-template-columns: repeat(3, 1fr); }
+  .resena--destacada { grid-column: span 2; } /* la reseña destacada ocupa 2 de las 3 columnas */
+}
+/* Tablets: 2 cards por fila */
+@media (max-width: 991px) {
+  .card { flex-basis: calc(50% - 10px); }
+}
+
+/* Celulares: 1 card por fila */
+@media (max-width: 599px) {
+  .card { flex-basis: 100%; }
+}

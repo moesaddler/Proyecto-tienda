@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<!-- Le indica al navegador que este archivo usa HTML5 -->
+<html lang="es"> <!-- lang="es": idioma de la página (ayuda a lectores de pantalla y buscadores) -->
+<head>
+  <!-- El <head> guarda información sobre la página que NO se ve en pantalla -->
+
+  <meta charset="UTF-8"> <!-- Permite mostrar tildes y la ñ correctamente -->
+
+  <!-- Hace que la página se adapte al ancho del celular. Sin esta línea, las media queries no funcionan bien -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>El Legado | Camisetas de Messi</title> <!-- Texto que aparece en la pestaña del navegador -->
+  <meta name="description" content="Tienda de camisetas con el número 10: selección, clubes y ediciones alternativas."> <!-- Resumen que usan los buscadores -->
+
+  <!-- GOOGLE FONTS (Clase 4)
+       Anton se usa para los títulos y Work Sans para los párrafos.
+       Los dos "preconnect" aceleran la carga de la fuente. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME: biblioteca de íconos (el carrito de los botones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Vincula el archivo de estilos externo. Va DESPUÉS de las fuentes para poder usarlas -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- El <body> contiene todo lo que se ve en la página.
+       Las clases siguen la metodología BEM: bloque__elemento--modificador
+       (por ejemplo, "card__titulo" es el título dentro del bloque "card") -->
+
+  <!-- ============ ENCABEZADO ============ -->
+  <header class="header">
+    <div class="header__marca">
+      <!-- Logo (Clase 2). El atributo alt describe la imagen para quien no puede verla -->
+      <img class="header__logo" src="imagenes/logo.svg" alt="Logo de El Legado" width="48" height="48">
+      <h1 class="header__titulo">El Legado</h1> <!-- El único <h1> de la página: el nombre del proyecto -->
+    </div>
+
+    <!-- NAVEGACIÓN (Clase 2): <nav> con lista desordenada <ul> de enlaces -->
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__lista">
+        <!-- href="#inicio" lleva a la sección que tenga id="inicio" (navegación interna) -->
+        <li><a class="nav__enlace" href="#inicio">Inicio</a></li>
+        <li><a class="nav__enlace" href="#productos">Productos</a></li>
+        <li><a class="nav__enlace" href="#resenas">Reseñas</a></li>
+        <li><a class="nav__enlace" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- <main> agrupa el contenido principal. Solo puede haber uno por página -->
+  <main>
+
+    <!-- ============ INICIO ============ -->
+    <section id="inicio" class="hero">
+      <!-- Número decorativo de fondo. aria-hidden="true" hace que los lectores de pantalla lo ignoren -->
+      <span class="hero__numero" aria-hidden="true">10</span>
+
+      <div class="hero__contenido">
+        <h2 class="hero__titulo">Vestí la 10</h2>
+        <p>Camisetas de la selección, de clubes y ediciones alternativas, con el número que todos reconocen.</p>
+        <!-- Un enlace con aspecto de botón que baja a la sección de productos -->
+        <a class="boton" href="#productos">Ver camisetas</a>
+      </div>
+
+      <img class="hero__imagen" src="imagenes/despedidamessi.jpg" alt="Camiseta celeste y blanca con el número 10" width="300" height="300">
+    </section>
+
+    <!-- ============ PRODUCTOS (se distribuye con FLEXBOX) ============ -->
+    <section id="productos" class="seccion productos">
+      <h2 class="seccion__titulo">Productos</h2>
+
+      <!-- Este div es el "padre flex": en el CSS tiene display:flex y reparte a las cards (sus hijos) -->
+      <div class="productos__lista">
+
+        <!-- Cada <article> es una tarjeta independiente. Las 4 tienen la misma estructura:
+             imagen, nombre, descripción, precio y botón -->
+        <article class="card">
+          <img class="card__imagen" src="imagenes/argentina2004titular.jpg" alt="Camiseta titular celeste y blanca 2004">
+          <h3 class="card__nombre">Titular celeste y blanca sub20 2004</h3>
+          <p class="card__descripcion">Rayas verticales clásicas con el 18 en la espalda.</p>
+          <p class="card__precio">$100.000</p>
+          <!-- <i class="fas fa-shopping-cart"> es el ícono de Font Awesome (fas = estilo sólido) -->
+          <button class="card__boton" type="button"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+        </article>
+
+        <article class="card">
+          <img class="card__imagen" src="imagenes/despedidamessi.jpg" alt="Camiseta Despedida Messi">
+          <h3 class="card__nombre">Edición Despedida de Messi</h3>
+          <p class="card__descripcion">Diseño inspirado en la bandera.</p>
+          <p class="card__precio">$100.000</p>
+          <!-- <i class="fas fa-shopping-cart"> es el ícono de Font Awesome (fas = estilo sólido) -->
+          <button class="card__boton" type="button"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+        </article>
+
+        <article class="card">
+          <img class="card__imagen" src="imagenes/argentina2022suplente.webp" alt="Camiseta alternativa Qatar 2022">
+          <h3 class="card__nombre">Alternativa violeta 2022</h3>
+          <p class="card__descripcion">Edición alternativa en color liso, para salir de lo clásico.</p>
+          <p class="card__precio">$100.000</p>
+          <button class="card__boton" type="button"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+        </article>
+
+        <article class="card">
+          <img class="card__imagen" src="imagenes/argentina2022titular.jpg" alt="Camiseta titular Qatar 2022">
+          <h3 class="card__nombre">Titular celeste y blanca 2022</h3>
+          <p class="card__descripcion">Franjas celestes y blancas.</p>
+          <p class="card__precio">$100.000</p>
+          <button class="card__boton" type="button"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+        </article>
+
+        <article class="card">
+          <img class="card__imagen" src="imagenes/barsa2004titular.webp" alt="Camiseta titular 2004 Barcelona">
+          <h3 class="card__nombre">Azulgrana</h3>
+          <p class="card__descripcion">Franjas azules y granas.</p>
+          <p class="card__precio">$100.000</p>
+          <button class="card__boton" type="button"><i class="fas fa-shopping-cart"></i> Agregar al carrito</button>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ VIDEO (Clase 2) ============ -->
+    <section id="video" class="seccion">
+      <h2 class="seccion__titulo">Conocé la tienda</h2>
+
+      <!-- "controls" muestra los botones de reproducir, pausa y volumen -->
+      <video class="video" controls>
+        <!-- IMPORTANTE: tenés que guardar tu video como "video.mp4" en la misma carpeta que este archivo -->
+        <source src="video.mp4" type="video/mp4">
+        <!-- Subtítulos en español (archivo subtitulos.vtt). "default" los activa automáticamente -->
+        <track src="subtitulos.vtt" kind="subtitles" srclang="es" label="Español" default>
+        <!-- Este texto solo se ve si el navegador no soporta video -->
+        Tu navegador no puede reproducir este video.
+      </video>
+    </section>
+
+    <!-- ============ RESEÑAS (se distribuye con GRID) ============ -->
+    <section id="resenas" class="seccion">
+      <h2 class="seccion__titulo">Reseñas</h2>
+
+      <!-- Este div es el "padre grid": el CSS define cuántas columnas tiene según el ancho de pantalla -->
+      <div class="resenas">
+        <!-- <blockquote> es la etiqueta semántica para citas; <cite> indica quién la dijo.
+             El modificador "--destacada" hace que esta reseña sea más ancha en pantallas grandes -->
+        <blockquote class="resena resena--destacada">
+          <p>Compré la titular para el último partido y me llegó en tres días. La tela es fresca y el número quedó perfecto.</p>
+          <cite>Lucía M.</cite>
+        </blockquote>
+        <blockquote class="resena">
+          <p>El talle es justo el que indica la tabla.</p>
+          <cite>Martín R.</cite>
+        </blockquote>
+        <blockquote class="resena">
+          <p>La violeta es una belleza, la uso todos los fines de semana.</p>
+          <cite>Camila S.</cite>
+        </blockquote>
+        <blockquote class="resena">
+          <p>Se la regalé a mi hijo y no se la saca más.</p>
+          <cite>Julián P.</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO (responsivo con MEDIA QUERIES) ============ -->
+    <section id="contacto" class="seccion">
+      <h2 class="seccion__titulo">Contacto</h2>
+
+      <!-- En celular, el formulario y el mapa van uno debajo del otro.
+           En pantallas más anchas, van uno al lado del otro (esto lo decide el CSS) -->
+      <div class="contacto">
+
+        <!-- FORMULARIO (Clase 3)
+             action: la dirección de Formspree a donde se envían los datos.
+             method="POST": envía los datos de forma oculta (no en la URL).
+              -->
+        <form class="formulario" action="https://formspree.io/f/mbgdowoq" method="POST">
+
+          <!-- El "for" del label coincide con el "id" del campo: al tocar el texto, se activa el campo -->
+          <label for="nombre">Nombre</label>
+          <!-- name="nombre": Formspree usa este nombre para identificar el dato. Sin "name" no se envía.
+               required: el navegador no deja enviar el formulario si está vacío -->
+          <input type="text" id="nombre" name="nombre" required>
+
+          <label for="email">Correo electrónico</label>
+          <!-- type="email": el navegador verifica que tenga formato de correo (con @) -->
+          <input type="email" id="email" name="email" required>
+
+          <label for="mensaje">Mensaje</label>
+          <!-- <textarea> es un campo de texto de varias líneas; rows="5" define su altura inicial -->
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+          <button class="boton" type="submit">Enviar mensaje</button>
+        </form>
+
+        <!-- IFRAME: incrusta una página externa (acá, un mapa de Google).
+             title describe el contenido; loading="lazy" lo carga solo cuando está cerca de verse -->
+        <iframe
+          class="contacto__mapa"
+          title="Mapa de ubicación"
+          src="https://www.google.com/maps?q=Buenos+Aires,+Argentina&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <!-- TABLA DE MENSAJES (Clase 3) con datos ficticios -->
+      <h3 class="tabla__titulo">Mensajes recibidos</h3>
+      <!-- Este contenedor permite hacer scroll horizontal de la tabla en celulares sin romper la página -->
+      <div class="tabla__contenedor">
+        <table class="tabla">
+          <!-- <thead>: fila de encabezados. <th> = celda de encabezado -->
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Mensaje</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <!-- <tbody>: el cuerpo de la tabla. <tr> = fila, <td> = celda de datos -->
+          <tbody>
+            <!-- colspan="4": esta celda ocupa las 4 columnas (fila combinada horizontalmente) -->
+            <tr><th colspan="4" class="tabla__grupo">Mensajes pendientes de respuesta</th></tr>
+            <tr>
+              <td>Sofía Díaz</td>
+              <td>sofia@ejemplo.com</td>
+              <td>¿Tienen talle XL?</td>
+              <td>Pendiente</td>
+            </tr>
+            <tr>
+              <td>Tomás Gómez</td>
+              <td>tomas@ejemplo.com</td>
+              <td>¿Hacen envíos al interior?</td>
+              <td>Pendiente</td>
+            </tr>
+            <tr><th colspan="4" class="tabla__grupo">Mensajes respondidos</th></tr>
+            <tr>
+              <!-- rowspan="2": esta celda ocupa 2 filas (fila combinada verticalmente).
+                   Por eso la fila siguiente tiene una celda menos: el nombre ya está arriba -->
+              <td rowspan="2">Valentina Ruiz</td>
+              <td>vale@ejemplo.com</td>
+              <td>¿Cuánto tarda el envío?</td>
+              <td>Respondido</td>
+            </tr>
+            <tr>
+              <td>vale@ejemplo.com</td>
+              <td>¿Puedo cambiar el talle?</td>
+              <td>Respondido</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ PIE DE PÁGINA ============ -->
+  <footer class="footer">
+    <!-- &copy; es el código HTML del símbolo © -->
+    <p>&copy; 2026 El Legado. Todos los derechos reservados.</p>
+    <p class="footer__aviso">Proyecto educativo. No tiene relación con Lionel Messi ni con ningún club o selección.</p>
+  </footer>
+
+</body>
+</html>
