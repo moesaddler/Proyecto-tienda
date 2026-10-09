@@ -1,4 +1,4 @@
-# La Diez | Camisetas de Messi
+# El Legado | Camisetas de Messi
 
 Sitio web de una tienda ficticia de camisetas con el número 10 (selección, clubes y ediciones alternativas). Es el Proyecto 1 (pre-entrega) del curso y sirve para practicar HTML semántico, CSS, diseño responsivo y publicación en GitHub Pages.
 
@@ -12,7 +12,7 @@ Mostrar los productos de la tienda, las reseñas de clientes y un formulario par
 
 - `index.html`: página principal (`header`, `nav`, `main`, `section`, `footer`).
 - `styles.css`: estilos externos.
-- `images/`: logo y camisetas en formato SVG.
+- `imagenes/`: logo y camisetas.
 - `video.mp4` y `subtitulos.vtt`: video de presentación con subtítulos en español.
 
 ## Secciones
@@ -28,7 +28,7 @@ Mostrar los productos de la tienda, las reseñas de clientes y un formulario par
 ## Cómo configuré Formspree
 
 1. Me registré en [formspree.io](https://formspree.io) y confirmé mi correo.
-2. Creé un formulario nuevo con el nombre "Contacto".
+2. Creé un formulario nuevo con el nombre "El Legado".
 3. Copié la URL que me dio Formspree y la usé en el atributo `action` del formulario, con `method="POST"`.
 4. Cada campo (`nombre`, `email`, `mensaje`) tiene su atributo `name`, para que Formspree reciba los datos.
 
