@@ -43,5 +43,5 @@ Mostrar los productos de la tienda, las reseñas de clientes y un formulario par
 
 ## Publicación
 
-- Repositorio: `https://github.com/TU-USUARIO/TU-REPOSITORIO`
-- Sitio publicado: `https://TU-USUARIO.github.io/TU-REPOSITORIO/`
+- Repositorio: `https://github.com/moesaddler/Proyecto-tienda`
+- Sitio publicado: `https://moesaddler.github.io/Proyecto-tienda/`
